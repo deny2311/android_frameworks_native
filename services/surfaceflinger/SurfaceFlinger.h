@@ -1112,8 +1112,7 @@ private:
     void enableHalVirtualDisplays(bool);
 
     // Virtual display lifecycle for ID generation and HAL allocation.
-    VirtualDisplayId acquireVirtualDisplay(ui::Size, ui::PixelFormat, ui::LayerStack,
-                                           bool canAllocateHwcForVDS)
+    VirtualDisplayId acquireVirtualDisplay(ui::Size, ui::PixelFormat, ui::LayerStack)
             REQUIRES(mStateLock);
     void releaseVirtualDisplay(VirtualDisplayId);
 
@@ -1196,7 +1195,6 @@ private:
                                                std::chrono::nanoseconds presentLatency);
     int getMaxAcquiredBufferCountForRefreshRate(Fps refreshRate) const;
 
-    bool canAllocateHwcDisplayIdForVDS(uint64_t usage);
     sp<StartPropertySetThread> mStartPropertySetThread;
     surfaceflinger::Factory& mFactory;
 
